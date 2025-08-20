@@ -1,7 +1,7 @@
 {
   "private": true,
   "type": "module",
-  "name": "13-manage-array-state",
+  "name": "11-lifting-state-up",
   "description": "리액트 템플릿 (Bun + Vite)",
   "version": "1.1.4",
   "scripts": {
