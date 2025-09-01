@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { LearnSection } from '@/components'
 import SearchQueryDemo from './components/search-posts'
-import RandomCountUp from './demo/app'
 
 export default function App() {
   return (
