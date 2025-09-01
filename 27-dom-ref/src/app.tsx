@@ -1,3 +1,4 @@
+import { useGSAP } from '@gsap/react'
 import { useEffect, useRef, useState } from 'react'
 import confetti from 'canvas-confetti'
 import gsap from 'gsap'
@@ -16,13 +17,42 @@ export default function App() {
       >
         {visible ? '감춤' : '표시'}
       </button>
-      {visible && <GsapDemoRefCallback />}
+      {visible && <GsapDemoUseGSAP />}
+
+      <div className="box size-20 bg-red-500 text-white grid place-content-center">
+        box 1
+      </div>
+      <div className="box size-20 bg-amber-500 text-white grid place-content-center">
+        box 2
+      </div>
     </LearnSection>
   )
 }
 
 // --------------------------------------------------------------------------
 // GSAP
+
+gsap.registerPlugin(useGSAP)
+
+function GsapDemoUseGSAP() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(
+    () => {
+      // 선택자
+      gsap.to('.box', { x: 360 })
+    },
+    { scope: containerRef }
+  )
+
+  return (
+    <div ref={containerRef}>
+      <figure className="box size-20 bg-black text-white grid place-content-center">
+        박스
+      </figure>
+    </div>
+  )
+}
 
 function GsapDemoRefCallback() {
   return (
@@ -50,7 +80,7 @@ function GsapDemoRefCallback() {
 }
 
 function GsapDemo() {
-  const gsapRef = useRef<HTMLElement>(null)
+  const gsapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const element = gsapRef.current
@@ -70,6 +100,7 @@ function GsapDemo() {
 
     return () => {}
   })
+
   return (
     <div ref={gsapRef}>
       <abbr title="Green Sock Animation Platform" className="text-5xl">
@@ -104,7 +135,8 @@ function VanillaTiltEffectDemo() {
   }
 
   // 2.  ref 속성 + useRef 훅 + useEffect 훅 연결하는 방법
-  const boxesRef = useRef<HTMLElement[]>([]) // RefObject { current: <figure14> }
+  const boxesRef = useRef<HTMLElement[]>([])
+
   useEffect(() => {
     const boxElements = boxesRef.current
 
@@ -119,10 +151,10 @@ function VanillaTiltEffectDemo() {
     }
 
     return () => {
-      console.log('바닐라 틸티 3D 이펙트 정리')
       if (boxElements.length > 0) {
+        console.log('바닐라 틸티 3D 이펙트 정리')
         for (const element of boxElements) {
-          ;(element as HTMLVanillaTiltElement).vanillaTilt.destroy()
+          ;(element as HTMLVanillaTiltElement).vanillaTilt?.destroy()
         }
       }
     }
@@ -133,6 +165,7 @@ function VanillaTiltEffectDemo() {
       {boxes.map((_, index) => (
         <figure
           key={index}
+          // ref={_boxRefCallback}
           ref={(element) => {
             if (element) boxesRef.current.push(element)
           }}
