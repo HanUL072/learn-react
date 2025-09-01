@@ -1,17 +1,16 @@
-export function getRandomCount(min: number, max: number) {
-  return Math.round(Math.random() * (max - min) + min)
+import { tw } from '@/utils'
+
+interface Props {
+  count: number
+  targetCount: number
 }
 
-export function getRandomHueColor() {
-  return getRandomCount(0, 360)
-}
+export default function Output({ count, targetCount }: Props) {
+  const isCompleted = count >= targetCount
 
-export function setAppColor() {
-  document.body.style.setProperty('--hue', String(getRandomHueColor()))
-}
-
-const ORIGIN_TITLE = document.title
-
-export function setDocumentTitle(targetCount: number) {
-  document.title = `(${targetCount}) ${ORIGIN_TITLE}`
+  return (
+    <output className={tw('output', isCompleted && 'is-animate')}>
+      {count}
+    </output>
+  )
 }
