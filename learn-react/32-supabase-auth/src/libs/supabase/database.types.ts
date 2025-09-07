@@ -23,7 +23,7 @@ export type Database = {
           phone: string | null
           profile_url: string | null
           updated_at: string | null
-          username: string | null
+          username: string
         }
         Insert: {
           bio?: string | null
@@ -33,7 +33,7 @@ export type Database = {
           phone?: string | null
           profile_url?: string | null
           updated_at?: string | null
-          username?: string | null
+          username: string
         }
         Update: {
           bio?: string | null
@@ -43,7 +43,7 @@ export type Database = {
           phone?: string | null
           profile_url?: string | null
           updated_at?: string | null
-          username?: string | null
+          username?: string
         }
         Relationships: []
       }
