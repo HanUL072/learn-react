@@ -20,27 +20,33 @@ export type Database = {
           created_at: string
           email: string | null
           id: string
+          phone: string | null
           profile_image: string | null
+          profile_url: string | null
           updated_at: string | null
-          username: string
+          username: string | null
         }
         Insert: {
           bio?: string | null
           created_at?: string
           email?: string | null
           id?: string
+          phone?: string | null
           profile_image?: string | null
+          profile_url?: string | null
           updated_at?: string | null
-          username: string
+          username?: string | null
         }
         Update: {
           bio?: string | null
           created_at?: string
           email?: string | null
           id?: string
+          phone?: string | null
           profile_image?: string | null
+          profile_url?: string | null
           updated_at?: string | null
-          username?: string
+          username?: string | null
         }
         Relationships: []
       }
@@ -51,7 +57,7 @@ export type Database = {
           done: boolean
           id: string
           updated_at: string | null
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           created_at?: string
@@ -59,7 +65,7 @@ export type Database = {
           done?: boolean
           id?: string
           updated_at?: string | null
-          user_id?: string
+          user_id?: string | null
         }
         Update: {
           created_at?: string
@@ -67,7 +73,7 @@ export type Database = {
           done?: boolean
           id?: string
           updated_at?: string | null
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: []
       }
