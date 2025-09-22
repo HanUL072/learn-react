@@ -6,7 +6,7 @@
 - error 파일
 - 파일 구조와 중첩 규칙
 
-## Kakao API
+## Kakao API 추가
 
 - [Kakao 책 검색](https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide#search-book)
 - [Kakao 디벨로퍼](https://developers.kakao.com/)
