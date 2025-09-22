@@ -1,9 +1,5 @@
-import { Section } from '@/components'
+import type { PropsWithChildren } from 'react'
 
-export default function SignUpPage() {
-  return (
-    <Section title="회원가입 페이지">
-      <p>회원가입 페이지 방문</p>
-    </Section>
-  )
+export default function AuthLayout({ children }: PropsWithChildren) {
+  return <div className="bg-amber-300 flex-1">{children}</div>
 }
